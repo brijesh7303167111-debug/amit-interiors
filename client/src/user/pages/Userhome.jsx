@@ -60,74 +60,75 @@ const Userhome = () => {
   }, [category, query]);
 
   return (
-    <div className="min-h-screen bg-black text-white p-4 md:p-8">
+    <div className="min-h-screen bg-black text-white p-4 md:p-8 relative">
 
-       <a
-  href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services!"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="fixed bottom-8 right-5 z-5  bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-transform transform hover:scale-110"
->
-  <FaWhatsapp className="w-11 h-11" />
-</a>
+  {/* WhatsApp Floating Button */}
+  <a
+    href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20know%20more%20about%20your%20services!"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="fixed bottom-6 right-6 z-50 border-3 border-white bg-green-400 text-black p-3 rounded-full shadow-lg hover:shadow-yellow-400/60 transition-transform transform hover:scale-110"
+  >
+    <FaWhatsapp className="w-8 text-white h-8" />
+  </a>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Top bar: title + Admin button */}
-        <div className="flex items-center justify-between mb-6 p-5 ">
-                <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-yellow-400">Amit Kumar Interiors </h1>
-                </div>
-          
-            
-                <div>
-                    <button
-                    onClick={() => navigate("/admin")}
-                    className="bg-yellow-400 text-black font-semibold px-3 py-1 rounded-lg shadow-md hover:shadow-yellow-400/50 transition"
-                    >
-                    Admin
-                    </button>
-                </div>
-          
-        </div>
+  <div className="max-w-7xl mx-auto">
 
-        <div className="w-full flex mb-8 justify-center " >
-             <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="bg-gray-900 items-center text-white px-3 py-2 rounded-md text-sm"
-            >
-              {CATEGORIES.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-        </div>
+    {/* Top Bar: Title + Admin Button */}
+    <div className="flex items-center justify-between mb-8 px-4 py-2 border-b border-yellow-400/40">
+      <h1 className="text-2xl md:text-3xl font-bold text-yellow-400 tracking-wide">
+        Amit Kumar Interiors
+      </h1>
 
-        {/* Gallery area */}
-        {loading ? (
-          // show skeleton grid while loading
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {Array.from({ length: limit }).map((_, i) => (
-              <SkeletonCard key={i} />
-            ))}
-          </div>
-        ) : imagesData.images.length === 0 ? (
-          <div className="text-center py-20 text-gray-400">No images found.</div>
-        ) : (
-          <>
-            <ImageGrid images={imagesData.images} />
-            <div className="mt-6">
-              <Pagination
-                page={page}
-                totalPages={imagesData.totalPages}
-                onPageChange={(p) => setPage(p)}
-              />
-            </div>
-          </>
-        )}
-      </div>
+      <button
+        onClick={() => navigate("/admin")}
+        className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg shadow-md hover:shadow-yellow-400/50 transition-transform hover:scale-105"
+      >
+        Admin
+      </button>
     </div>
+
+    {/* Category Dropdown */}
+    <div className="w-full flex justify-center mb-8">
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="bg-gray-900 text-yellow-400 border border-yellow-400/40 px-4 py-2 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+      >
+        {CATEGORIES.map((c) => (
+          <option key={c} value={c} className="bg-black text-yellow-400">
+            {c}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    {/* Gallery Section */}
+    {loading ? (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {Array.from({ length: limit }).map((_, i) => (
+          <SkeletonCard key={i} />
+        ))}
+      </div>
+    ) : imagesData.images.length === 0 ? (
+      <div className="text-center py-20 text-gray-500 italic">
+        No images found.
+      </div>
+    ) : (
+      <>
+        <ImageGrid images={imagesData.images} />
+        <div className="mt-8 flex justify-center">
+          <Pagination
+            page={page}
+            totalPages={imagesData.totalPages}
+            onPageChange={(p) => setPage(p)}
+          />
+        </div>
+      </>
+    )}
+  </div>
+</div>
+
   );
 };
 
