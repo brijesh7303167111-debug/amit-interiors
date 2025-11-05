@@ -5,6 +5,7 @@ import './App.css'
 import Login from './admin/pages/Login'
 import Home from './admin/pages/Home'
 import Userhome from './user/pages/Userhome';
+import Mainhome from './user/pages/Mainhome';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,7 +14,8 @@ function App() {
       <>
       <Router>
         <Routes>
-          <Route path="/" element={<Userhome /> } />
+          <Route path="/" element={<Mainhome /> } />
+          <Route path="/user" element={<Userhome /> } />
           <Route path="/admin" element={<Home />} />
           <Route path="/login" element={<Login />} />
         </Routes>

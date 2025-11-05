@@ -39,7 +39,7 @@ const ImageGrid = ({ images }) => {
             {/* Download Button */}
             <button
               onClick={() => handleDownload(selectedImage.url)}
-              className="absolute top-2 left-2 bg-yellow-400 hover:bg-yellow-900 text-white p-2 rounded-full"
+              className="absolute top-2 left-2 bg-amber-500 hover:bg-yellow-900 text-white p-2 rounded-full"
             >
               <Download className="w-5 h-5" />
             </button>

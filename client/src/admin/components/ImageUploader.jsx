@@ -72,9 +72,9 @@ const ImageUploader = () => {
   return (
     <form
       onSubmit={handleUpload}
-      className="flex flex-col items-center justify-center bg-black/40 border border-yellow-500/20 rounded-2xl p-6 w-full max-w-md mx-auto sm:max-w-lg"
+      className="flex flex-col items-center justify-center bg-black/40 border border-amber-500/20 rounded-2xl p-6 w-full max-w-md mx-auto sm:max-w-lg"
     >
-      <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
+      <h2 className="text-2xl font-semibold text-amber-500 mb-4">
         Upload Images
       </h2>
 
@@ -88,11 +88,11 @@ const ImageUploader = () => {
           {categories.length > 0
             ? categories.join(", ")
             : "Select Categories"}
-          <span className="ml-2 text-yellow-400">▼</span>
+          <span className="ml-2 text-amber-500">▼</span>
         </button>
 
         {dropdownOpen && (
-          <div className="absolute z-10 w-full bg-neutral-900 border border-yellow-500/20 rounded-lg mt-2 max-h-48 overflow-y-auto">
+          <div className="absolute z-10 w-full bg-neutral-900 border border-amber-500/20 rounded-lg mt-2 max-h-48 overflow-y-auto">
             {categoryOptions.map((cat) => (
               <label
                 key={cat}
@@ -102,7 +102,7 @@ const ImageUploader = () => {
                   type="checkbox"
                   checked={categories.includes(cat)}
                   onChange={() => toggleCategory(cat)}
-                  className="mr-2 accent-yellow-400"
+                  className="mr-2 accent-amber-500"
                 />
                 {cat}
               </label>
@@ -132,7 +132,7 @@ const ImageUploader = () => {
             key={idx}
             src={src}
             alt="Preview"
-            className="rounded-lg shadow-md border border-yellow-500/30 object-cover h-32 w-full"
+            className="rounded-lg shadow-md border border-amber-500/30 object-cover h-32 w-full"
           />
         ))}
       </div> */}
@@ -141,8 +141,8 @@ const ImageUploader = () => {
       type="submit"
       onClick={handleUpload}
       disabled={uploading}
-      className={`bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-6 py-2 rounded-lg shadow-md hover:shadow-yellow-400/50 transition w-full sm:w-auto
-        ${uploading ? "opacity-50 cursor-not-allowed hover:bg-yellow-400 hover:shadow-none" : ""}
+      className={`bg-amber-500 hover:bg-amber-500 text-black font-semibold px-6 py-2 rounded-lg shadow-md hover:shadow-amber-500/50 transition w-full sm:w-auto
+        ${uploading ? "opacity-50 cursor-not-allowed hover:bg-amber-500 hover:shadow-none" : ""}
       `}
     >
       {uploading ? "Uploading..." : "Upload"}
