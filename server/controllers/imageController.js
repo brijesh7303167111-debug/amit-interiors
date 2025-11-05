@@ -94,3 +94,44 @@ export const getImages = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error", error: err.message });
   }
 };
+
+
+// controllers/imageController.js
+
+export const getAllImages = async (req, res) => {
+  try {
+    // Optional: allow ?limit= parameter in URL, default 50, max 500
+    const limit = Math.max(1, Math.min(500, parseInt(req.query.limit) || 50));
+
+    // Optional filters if you still want category or search
+    const category = req.query.category && req.query.category !== "All" ? req.query.category : null;
+    const q = req.query.q ? req.query.q.trim() : null;
+
+    const filter = {};
+
+    if (category) {
+      filter.categories = category;
+    }
+
+    if (q) {
+      filter.$or = [
+        { categories: { $regex: q, $options: "i" } },
+        // add other searchable fields if needed
+      ];
+    }
+
+    // Fetch all images (no pagination, just limit)
+    const images = await Image.find(filter)
+      .sort({ createdAt: -1 })
+      .lean();
+
+    res.json({
+      success: true,
+      count: images.length,
+      images,
+    });
+  } catch (err) {
+    console.error("Error fetching all images:", err);
+    res.status(500).json({ success: false, message: "Server error", error: err.message });
+  }
+};
