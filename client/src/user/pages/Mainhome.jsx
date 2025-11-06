@@ -4,8 +4,7 @@ import axios from 'axios';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { CheckCircle,  Construction, Aperture, Boxes } from 'lucide-react';
-
-
+import AnimatedCounter from '../components/AnimatedCounter';
 
 
 
@@ -32,7 +31,9 @@ const DesignCard = ({ image }) => (
 const ImageSlider = ({ title, category, images, isLoading, onNavigate }) => {
   const isLoaded = !isLoading && images.length > 0;
   const navigate = useNavigate();
-   const scrollRef = useRef(null);
+
+  // 🔹 Create a ref to the scroll container
+  const scrollRef = useRef(null);
 
   // 🔹 On load, scroll to extreme left
   useEffect(() => {
@@ -41,39 +42,51 @@ const ImageSlider = ({ title, category, images, isLoading, onNavigate }) => {
     }
   }, [images]);
 
+  const handleViewMore = () => {
+    onNavigate("/user");
+  };
+
   return (
-    // SECONDARY BACKGROUND: Deep Gray
-    <section id={category.toLowerCase().replace(' ', '')} className="py-16 pl-5 md:py-24 bg-gray-900 border-b border-gray-800">
+    <section
+      id={category.toLowerCase().replace(" ", "")}
+      className="py-16 md:py-24 bg-gray-900 border-b border-gray-800"
+    >
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 border-l-4 border-amber-500 pl-4 tracking-tight">
           {title} <span className="text-amber-500">Designs</span>
         </h2>
         <p className="text-lg text-gray-400 mb-12 max-w-2xl">
-          Explore our exclusive collection of <span className='font-semibold text-yellow-400' >{category}</span> interiors, showcasing dark elegance and functionality.
+          Explore our exclusive collection of{" "}
+          <span className="font-semibold text-yellow-400">{category}</span>{" "}
+          interiors, showcasing dark elegance and functionality.
         </p>
 
         {/* Horizontal Scroll Area */}
-        <div className="flex overflow-x-scroll snap-x space-x-6 pb-4 scrollbar-hide">
-          {isLoading && 
-            [1, 2, 3].map(i => (
-              <div key={i} className="animate-pulse bg-gray-800 rounded-xl h-64 w-80 md:w-96 flex-shrink-0"></div>
-            ))
-          }
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-scroll snap-x space-x-6 pb-4 scrollbar-hide"
+        >
+          {isLoading &&
+            [1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="animate-pulse bg-gray-800 rounded-xl h-64 w-80 md:w-96 flex-shrink-0"
+              ></div>
+            ))}
 
-          {isLoaded && images.map(image => (
-            <DesignCard key={image.id} image={image} />
-          ))}
+          {isLoaded && images.map((image) => <DesignCard key={image.id} image={image} />)}
 
           {/* View More Button Card */}
-          <div  className="snap-start flex-shrink-0 w-80 md:w-96 h-64 flex items-center justify-center">
-            <button 
+          <div className="snap-start flex-shrink-0 w-80 md:w-96 h-64 flex items-center justify-center">
+            <button
               onClick={() => navigate("/user")}
               className="group flex items-center justify-center p-6 w-full h-5/6 rounded-xl border-4 border-dashed border-amber-600 text-amber-500 transition-all duration-300 hover:bg-amber-600 hover:text-black hover:shadow-2xl hover:shadow-amber-900/70 hover:scale-[1.05]"
             >
               <span className="flex flex-col items-center">
                 <span className="text-2xl font-bold mb-2">View More Designs</span>
                 <span className="text-sm flex items-center">
-                  Discover the full {category} gallery <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                  Discover the full {category} gallery{" "}
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </span>
             </button>
@@ -310,6 +323,10 @@ const [imagesData, setImagesData] = useState({
               </button>
             </div>
           </div>
+
+
+
+
         </section>
 
         
@@ -353,7 +370,7 @@ const [imagesData, setImagesData] = useState({
     <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
         <div className="lg:w-1/2">
             <p className="text-sm font-semibold uppercase text-amber-500 mb-2">Who We Are</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 md:mb-10 leading-tight">
+            <h2 className=" text-3xl md:text-4xl md:text-5xl font-extrabold text-white mb-6 md:mb-10 leading-tight">
                 Design Philosophy: <span className="text-amber-500">Form Meets Function</span>
             </h2>
             {/* <p className="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -362,11 +379,11 @@ const [imagesData, setImagesData] = useState({
             
             {/* NEW: Dedicated Services List */}
             <div className="mt-8">
-                <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                <h3 className="md:text-2xl text-xl font-bold text-white md:mb-4  mb-6 flex items-center">
                     <Construction className="w-6 h-6 text-amber-500 mr-3" />
                     Core Expertise in Finishes
                 </h3>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                <div className="grid grid-cols-2 gap-x-9 gap-y-7">
                     {/* Item 1: POP Downcieling */}
                     <div className="flex items-center text-gray-300">
                         <CheckCircle className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" />
@@ -433,6 +450,27 @@ const [imagesData, setImagesData] = useState({
             </div>
         </div>
     </div>
+
+
+ {/* Counter Section */}
+<section id="stats" className="py-20 bg-gradient-to-b from-gray-900 to-black text-white">
+  <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+    {[
+      { label: "Creative Minds", value: 50, suffix: "+", desc: "Team Members" },
+      { label: "Years of Expertise", value: 20, suffix: "+", desc: "Experience" },
+      { label: "Cities Served", value: 10, suffix: "+", desc: "Across India" },
+      { label: "Dream Spaces", value: 200, suffix: "+", desc: "Projects Delivered" },
+    ].map((item, index) => (
+      <div key={index} className="flex flex-col items-center justify-center">
+        <AnimatedCounter value={item.value} suffix={item.suffix} />
+        <h3 className="text-lg md:text-xl font-semibold mt-2 text-amber-400">{item.label}</h3>
+        <p className="text-gray-400 text-sm md:text-base">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+
 </section>
         {/* 4. Category Sliders */}
         
