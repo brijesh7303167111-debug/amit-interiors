@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Menu, X, ArrowRight, Home, Layout, CookingPot, Leaf, Building, Phone, Mail, MapPin } from 'lucide-react';
+import { Menu, X, ArrowRight, Home, Layout, CookingPot, Leaf, Building, Phone, Mail, MapPin, LampCeiling, LampCeilingIcon } from 'lucide-react';
 import axios from 'axios';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
-
+import { CheckCircle,  Construction, Aperture, Boxes } from 'lucide-react';
 
 
 
@@ -275,11 +275,9 @@ const [imagesData, setImagesData] = useState({
         
         {/* 2. Hero Section (High Impact) */}
         <section id="home" className="relative h-[80vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image/Video Placeholder with Parallax-like Effect */}
-          <div 
+           <div 
             className="absolute inset-0 bg-cover bg-center transition-transform duration-1000" 
             style={{ 
-              // Placeholder image with black and gold theme
               backgroundImage: 'url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
               backgroundAttachment: 'fixed'
             }}
@@ -287,7 +285,6 @@ const [imagesData, setImagesData] = useState({
             <div className="absolute inset-0 bg-black/50"></div>
           </div>
           
-          {/* Hero Content */}
           <div className="relative z-10 text-center p-6 max-w-4xl text-white animate-fade-in-up">
             <h1 className="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-lg tracking-tighter leading-tight">
               Crafting <span className="text-amber-400 italic">Spaces</span>, Defining <span className="text-amber-400 italic">Lifestyles</span>.
@@ -313,8 +310,10 @@ const [imagesData, setImagesData] = useState({
         </section>
 
         
+
+        
         {/* 3. About Section (Clean & Focused) */}
-        <section id="about" className="py-24 bg-gray-900">
+        {/* <section id="about" className="py-24 bg-gray-900">
           <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <p className="text-sm font-semibold uppercase text-amber-500 mb-2">Who We Are</p>
@@ -338,14 +337,100 @@ const [imagesData, setImagesData] = useState({
                         className="w-full h-full object-cover"
                     />
                 </div>
-                {/* Accent box using amber */}
-                <div className="absolute -bottom-4 -right-4 bg-amber-600 text-black p-4 rounded-xl shadow-xl shadow-amber-900/50 font-bold text-xl transform rotate-3">
+                  <div className="absolute -bottom-4 -right-4 bg-amber-600 text-black p-4 rounded-xl shadow-xl shadow-amber-900/50 font-bold text-xl transform rotate-3">
                     10+ Years of Excellence
                 </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
+     
+
+<section id="about" className="py-24 bg-gray-900">
+    <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+        <div className="lg:w-1/2">
+            <p className="text-sm font-semibold uppercase text-amber-500 mb-2">Who We Are</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 md:mb-10 leading-tight">
+                Design Philosophy: <span className="text-amber-500">Form Meets Function</span>
+            </h2>
+            {/* <p className="text-gray-300 mb-6 text-lg leading-relaxed">
+                For over a decade, <span className='font-semibold text-white'> Amit Interiors</span> team's vision has been to bring the **warmth and soul of Indian design** into every home. From earthy tones to intricate details, we strive to reflect the essence of India’s culture — creating spaces that feel personal, lively, and truly yours.
+            </p> */}
+            
+            {/* NEW: Dedicated Services List */}
+            <div className="mt-8">
+                <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                    <Construction className="w-6 h-6 text-amber-500 mr-3" />
+                    Core Expertise in Finishes
+                </h3>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                    {/* Item 1: POP Downcieling */}
+                    <div className="flex items-center text-gray-300">
+                        <CheckCircle className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" />
+                        <span className="text-base font-medium">P.O.P. Downcieling (Modern & Classic)</span>
+                    </div>
+                    {/* Item 2: Grid Punning */}
+                    <div className="flex items-center text-gray-300">
+                        <Boxes className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" />
+                        <span className="text-base font-medium">Wall Punning & Surface Prep</span>
+                    </div>
+                    {/* Item 3: Gypsum Board */}
+                    <div className="flex items-center text-gray-300">
+                        <Boxes className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" />
+                        <span className="text-base font-medium">Gypsum Board Installations</span>
+                    </div>
+                    {/* Item 4: Grid Ceiling */}
+                    <div className="flex items-center text-gray-300">
+                        <LampCeilingIcon className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" />
+                        <span className="text-base font-medium">Grid Ceiling Systems</span>
+                    </div>
+                    {/* Item 5: PVC Louvers */}
+                    <div className="flex items-center text-gray-300">
+                        <Aperture className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" />
+                        <span className="text-base font-medium">P.V.C. Louvers & Panelling</span>
+                    </div>
+                    {/* Item 6: Moldings */}
+                    <div className="flex items-center text-gray-300">
+                        <Boxes className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" />
+                        <span className="text-base font-medium">Moldings (P.O.P. & P.V.C)</span>
+                    </div>
+                    {/* Item 7: Gypsum Plaster */}
+                    <div className="flex items-center text-gray-300">
+                        <Boxes className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0" />
+                        <span className="text-base font-medium">Flawless Gypsum Plastering</span>
+                    </div>
+                    {/* Item 8: General Ceiling Work CTA */}
+                    <div className="hidden md:flex items-center justify-center mt-8 mb-2 text-gray-300 col-span-2">
+                        <span className="py-2 px-4 bg-amber-600 text-black font-semibold rounded-full text-sm shadow-md transition hover:bg-amber-700">
+                            All Types Of P.O.P. & Ceiling Works Available
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {/* END: Dedicated Services List */}
+
+            <p className="text-gray-400 mb-8 mt-8 text-lg leading-relaxed border-l-4 border-amber-400 pl-4 italic">
+                "Every great design begins with an even better story."
+            </p>
+            
+            
+        </div>
+        
+        <div className="lg:w-1/2 relative">
+            <div className="aspect-video w-full border-5 border-white rounded-2xl shadow-2xl shadow-black/70 overflow-hidden transform transition duration-500 hover:scale-[1.01]">
+                <img 
+                    src="https://imgs.search.brave.com/722yQ5jRh0cZ91U74fq4Rmj5g3L7H91soaMET5uVUe8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9nb29k/aG9tZXMud3dtaW5k/aWEuY29tL2NvbnRl/bnQvMjAyNC9tYXkv/ZGVzaWduZXJzZW5j/bGF2ZW9mZmljZWlu/dGVyaW9yc3dvcmtz/cGFjZWludGVyaW9y/c2ZvcmFuaW50ZXJp/b3JkZXNpZ25lcnNv/ZmZpY2UxOTE3MTQ3/MzY3NDIuanBn" 
+                    alt="Amit Interiors Studio" 
+                    className="w-full h-full object-cover"
+                />
+            </div>
+            {/* Accent box using amber */}
+            <div className="absolute -bottom-4 -right-4 bg-amber-600 text-black p-4 rounded-xl shadow-xl shadow-amber-900/50 font-bold text-xl transform rotate-3">
+                20+ Years of Excellence
+            </div>
+        </div>
+    </div>
+</section>
         {/* 4. Category Sliders */}
         
         {/* The loading state is managed by the main 'loading' state */}
@@ -423,20 +508,19 @@ const [imagesData, setImagesData] = useState({
 
             {/* Inquiry Form */}
             <div className="lg:col-span-2 bg-gray-900 p-8 rounded-xl shadow-2xl shadow-black/70">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input type="text" placeholder="Your Name" className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-amber-500 focus:border-amber-500 text-white placeholder-gray-400 transition duration-200" required />
-                  <input type="email" placeholder="Your Email" className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-amber-500 focus:border-amber-500 text-white placeholder-gray-400 transition duration-200" required />
-                </div>
-                <input type="text" placeholder="Project Type (e.g., Residential, Commercial)" className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-amber-500 focus:border-amber-500 text-white placeholder-gray-400 transition duration-200" required />
-                <textarea placeholder="Tell us about your project vision..." rows="5" className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-amber-500 focus:border-amber-500 text-white placeholder-gray-400 transition duration-200" ></textarea>
-                <button 
-                  type="submit" 
-                  className="w-full py-3 bg-amber-600 text-black font-bold rounded-lg text-lg shadow-lg shadow-amber-500/30 transition duration-300 transform hover:scale-[1.01] hover:bg-amber-700"
-                >
-                  Send Inquiry
-                </button>
-              </form>
+              <div className="w-full h-[450px] rounded-lg overflow-hidden shadow-lg shadow-amber-500/20">
+  <iframe
+    title="Amit Interiors Location"
+    src="https://www.google.com/maps?q=H.No.1337,St.no.8,Kara+Bara,Arjun+Nagar,Near+Primary+School,Ludhiana&output=embed"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
             </div>
           </div>
         </section>

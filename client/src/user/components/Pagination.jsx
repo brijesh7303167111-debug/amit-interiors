@@ -13,7 +13,7 @@ const Pagination = ({ page, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(Math.max(1, page - 1))}
         disabled={page === 1}
-        className={`px-3 py-1 rounded ${page === 1 ? "bg-gray-800 text-gray-400" : "bg-yellow-400 text-black font-semibold"}`}
+        className={`px-3 py-1 rounded ${page === 1 ? "bg-gray-800 text-gray-400" : "bg-amber-500 text-black font-semibold"}`}
       >
         Prev
       </button>
@@ -32,7 +32,7 @@ const Pagination = ({ page, totalPages, onPageChange }) => {
         <button
           key={p}
           onClick={() => onPageChange(p)}
-          className={`px-3 py-1 rounded ${p === page ? "bg-yellow-400 text-black font-semibold" : "bg-gray-900 text-gray-200"}`}
+          className={`px-3 py-1 rounded ${p === page ? "bg-amber-500 text-black font-semibold" : "bg-gray-900 text-gray-200"}`}
         >
           {p}
         </button>
@@ -51,7 +51,7 @@ const Pagination = ({ page, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(Math.min(totalPages, page + 1))}
         disabled={page === totalPages}
-        className={`px-3 py-1 rounded ${page === totalPages ? "bg-gray-800 text-gray-400" : "bg-yellow-400 text-black font-semibold"}`}
+        className={`px-3 py-1 rounded ${page === totalPages ? "bg-gray-800 text-gray-400" : "bg-amber-500 text-black font-semibold"}`}
       >
         Next
       </button>

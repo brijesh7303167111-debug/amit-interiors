@@ -75,21 +75,19 @@ const Userhome = () => {
   <div className="max-w-7xl mx-auto">
 
     {/* Top Bar: Title + Admin Button */}
-    <div className="flex items-center justify-between mb-8 px-4 py-2 border-b border-amber-500/40">
-      <h1 onClick={() => navigate("/")}  className="text-2xl md:text-3xl font-bold text-amber-500 tracking-wide">
-        Amit Kumar Interiors
-      </h1>
+    <div className="flex items-center justify-center  mb-10 px-4 py-2 border-b border-amber-500/40">
+     
 
-      <button
-        onClick={() => navigate("/admin")}
-        className="bg-amber-500 text-black font-semibold px-4 py-2 rounded-lg shadow-md hover:shadow-amber-500/50 transition-transform hover:scale-105"
-      >
-        Admin
-      </button>
+       <div onClick={() => navigate("/")} className="text-3xl  text-white flex items-center">
+            <span className="text-amber-500 italic">Amit</span> 
+            <span className="ml-1 tracking-tight">Interiors</span>
+          </div>
+
+     
     </div>
 
     {/* Category Dropdown */}
-    <div className="w-full flex justify-center mb-8">
+    <div className="w-full flex  justify-center mb-15">
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}

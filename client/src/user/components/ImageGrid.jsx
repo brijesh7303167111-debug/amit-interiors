@@ -15,7 +15,7 @@ const ImageGrid = ({ images }) => {
   return (
     <>
       {/* Image Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 w-full h-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-8 w-full h-auto">
        
         {images.map((img) => (
           <div key={img._id} onClick={() => setSelectedImage(img)}>
