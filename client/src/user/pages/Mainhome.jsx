@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Menu, X, ArrowRight, Home, Layout, CookingPot, Leaf, Building, Phone, Mail, MapPin, LampCeiling, LampCeilingIcon } from 'lucide-react';
 import axios from 'axios';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -32,15 +32,18 @@ const DesignCard = ({ image }) => (
 const ImageSlider = ({ title, category, images, isLoading, onNavigate }) => {
   const isLoaded = !isLoading && images.length > 0;
   const navigate = useNavigate();
+   const scrollRef = useRef(null);
 
-  const handleViewMore = () => {
-    // Simulate navigation to the /user page
-    onNavigate("/user");
-  };
+  // 🔹 On load, scroll to extreme left
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = 0;
+    }
+  }, [images]);
 
   return (
     // SECONDARY BACKGROUND: Deep Gray
-    <section id={category.toLowerCase().replace(' ', '')} className="py-16 md:py-24 bg-gray-900 border-b border-gray-800">
+    <section id={category.toLowerCase().replace(' ', '')} className="py-16 pl-5 md:py-24 bg-gray-900 border-b border-gray-800">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 border-l-4 border-amber-500 pl-4 tracking-tight">
           {title} <span className="text-amber-500">Designs</span>
